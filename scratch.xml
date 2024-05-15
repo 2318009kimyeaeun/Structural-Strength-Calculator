@@ -1,24 +1,29 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="scratch" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-    <module name="structural-strength-Calcultor" />
-    <option name="ENV_FILES" value="" />
-    <option name="INTERPRETER_OPTIONS" value="" />
-    <option name="PARENT_ENVS" value="true" />
-    <envs>
-      <env name="PYTHONUNBUFFERED" value="1" />
-    </envs>
-    <option name="SDK_HOME" value="" />
-    <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
-    <option name="IS_MODULE_SDK" value="true" />
-    <option name="ADD_CONTENT_ROOTS" value="true" />
-    <option name="ADD_SOURCE_ROOTS" value="true" />
-    <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
-    <option name="PARAMETERS" value="" />
-    <option name="SHOW_COMMAND_LINE" value="false" />
-    <option name="EMULATE_TERMINAL" value="false" />
-    <option name="MODULE_MODE" value="false" />
-    <option name="REDIRECT_INPUT" value="false" />
-    <option name="INPUT_FILE" value="" />
-    <method v="2" />
-  </configuration>
-</component>
+def calculate_strength():
+    print("구조물의 강도를 계산합니다.")
+
+    while True:
+        # 사용자 입력 받기
+        material = input("구조물의 재료를 입력하세요 (철강 또는 콘크리트, 종료하려면 '종료' 입력): ")
+
+        if material == '종료':
+            print("프로그램을 종료합니다.")
+            break
+
+        if material != "철강" and material != "콘크리트":
+            print("잘못된 재료입니다. 철강 또는 콘크리트 중 하나를 입력하세요.")
+            continue
+
+        dimension = float(input("구조물의 차원을 입력하세요 (mm): "))
+        load = float(input("구조물이 견디는 하중을 입력하세요 (kN): "))
+
+        # 재료에 따른 강도 계산
+        if material == "철강":
+            strength = 300 * dimension
+        else:
+            strength = 500 * dimension
+
+        # 강도에 따른 안전 여부 판단
+        if strength >= load:
+            print("구조물은 안전합니다.")
+        else:
+            print("구조물은 파손될 위험이 있습니다.")
